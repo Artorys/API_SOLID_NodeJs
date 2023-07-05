@@ -196,7 +196,7 @@
     },
     "tabnine.experimentalAutoImports": true,
     "gitlens.codeLens.enabled": false,
-    "workbench.iconTheme": "symbols",
+    "workbench.iconTheme": "material-icon-theme",
     "polacode.transparentBackground": true,
     "polacode.target": "snippet",
     "editor.minimap.enabled": false,
@@ -207,12 +207,12 @@
       "editor.defaultFormatter": "vscode.json-language-features"
     },
     "workbench.editor.untitled.hint": "hidden",
-    "workbench.colorTheme": "Omni",
+    "workbench.colorTheme": "Dracula",
     "liveServer.settings.donotShowInfoMsg": true,
     "[json]": {
       "editor.defaultFormatter": "vscode.json-language-features"
     },
     "window.commandCenter": true,
     "git.openRepositoryInParentFolders": "always",
-    "window.zoomLevel": 1
+    "window.zoomLevel": 0.5
   }

@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { userRoute } from "./user.route";
+import { userRoute } from "./userRoute";
 export function appRoutes(app: Express){
     app.use("/user",userRoute)
 }

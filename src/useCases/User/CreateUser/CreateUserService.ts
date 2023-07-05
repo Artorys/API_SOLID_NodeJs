@@ -1,7 +1,11 @@
 import { IServiceUseCase } from "../../IServiceUseCase";
+import { ICreateUserRequestDTO } from "./ICreateUserRequestDTO";
 
 export class CreateUserService implements IServiceUseCase{
-  async execute(): Promise<void> {
+
+  execute(data: any) {
     
   }
 }
+
+
