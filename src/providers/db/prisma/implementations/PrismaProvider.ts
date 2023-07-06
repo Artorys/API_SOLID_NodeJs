@@ -1,7 +1,7 @@
 import {PrismaClient}  from "@prisma/client"
-import { IDBProvider } from "../IDBProvider"
+import { IPrismaProvider } from "../IPrismaProvider"
 
-export class PrismaProvider implements IDBProvider{
+export class PrismaProvider implements IPrismaProvider{
 
     connect(): PrismaClient {
         const prisma = new PrismaClient()

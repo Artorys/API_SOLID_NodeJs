@@ -10,4 +10,12 @@ export class UserRepository implements IUserRepository{
     const userCreated = await repository.user.create({data : {...user}})
     return userCreated
   }
+  async findUserAlreadyUsedEmail(email: string): Promise<boolean> {
+    const repository = this.prismaClient
+    const userWithEmailAlreadyInUse = await repository.user.findFirst({where : {email}})
+    if(userWithEmailAlreadyInUse){
+      return true
+    }
+    return false
+  }
 }

@@ -1,5 +1,6 @@
 export interface IUserRepository{
   save(data : IUserRepositoryCreate): Promise<IUserRepositoryRead>
+  findUserAlreadyUsedEmail(email : string) : Promise<boolean>
 }
 export interface IUserRepositoryCreate{
   name: string;

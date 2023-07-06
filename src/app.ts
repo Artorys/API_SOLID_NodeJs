@@ -1,6 +1,5 @@
 import Express  from "express";
 import { appRoutes } from "./routes";
-import { User } from "./entities/User";
 
 const app = Express()
 
