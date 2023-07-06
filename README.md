@@ -1,4 +1,4 @@
-# Projeto Imobiliária: KImóveis - TypeORM com Relacionamentos
+# Projeto Imobiliária: KImóveis - Prisma com Relacionamentos
 
 ## Introdução
 
@@ -15,7 +15,7 @@ A sua empresa está te confiando esse desafio, portanto, dê o seu melhor no des
 -   O código deve estar em **TypeScript**, caso não esteja a entrega será zerada;
 -   Deve ser feita a **serialização** dos dados utilizando a biblioteca **zod**;
 -   Deverá ser utilizado um banco de dados **postgres** para a elaboração da API;
--   Deverá utilizar **TypeORM** no lugar de **PG e PG-Format**;
+-   Deverá utilizar **Prisma**;
 -   O nome da tabela/entidade, colunas e demais especificações, devem ser **seguidas à risca**. Caso tenha divergência, os testes não funcionarão e será descontado nota;
     -   Tenha muita atenção sobre o nome das chaves nos objetos de entrada e saída de cada requisição;
 
