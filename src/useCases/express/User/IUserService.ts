@@ -2,6 +2,6 @@ import { IUserRepository, IUserRepositoryCreate, IUserRepositoryRead } from "../
 
 
 export interface IUserService{
-  execute(arg?: IUserRepositoryCreate | string) : Promise<IUserRepositoryRead | Array<IUserRepositoryRead | null>>
+  execute(arg?: IUserRepositoryCreate | string) : Promise<IUserRepositoryRead | Array<IUserRepositoryRead> | void>
   userRepository : IUserRepository
 }

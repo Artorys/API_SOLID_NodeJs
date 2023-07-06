@@ -5,17 +5,25 @@ import { createUserSchema } from "../useCases/express/User/CreateUser/CreateUser
 import { createUserController } from "../useCases/express/User/CreateUser";
 import { readAllUserController } from "../useCases/express/User/ReadAllUser";
 import { readSpecifyUserController } from "../useCases/express/User/ReadSpecifyUser";
+import { deleteUserController } from "../useCases/express/User/DeleteUser";
 
 const userRoute = Router()
+userRoute.post("",schemaValidationMiddleware(createUserSchema),(req: ISchemaRequestMiddleware,res)=>{
+  return createUserController.handle(req,res)
+})
 
 userRoute.get("",(req : Request,res : Response)=>{
   return readAllUserController.handle(req,res)
 })
+
 userRoute.get("/:id",(req : Request, res : Response)=>{
   return readSpecifyUserController.handle(req,res)
 })
-userRoute.post("",schemaValidationMiddleware(createUserSchema),(req: ISchemaRequestMiddleware,res)=>{
-  return createUserController.handle(req,res)
+
+
+userRoute.delete("/:id",(req : Request,res : Response)=>{
+  return deleteUserController.handle(req,res)
 })
+
 
 export {userRoute}

@@ -1,5 +1,6 @@
 import {PrismaClient } from "@prisma/client";
 import { IUserRepository, IUserRepositoryCreate, IUserRepositoryRead } from "../IUserRepository";
+import { User } from "../../../entities/User";
 
 export class UserRepository implements IUserRepository{
   
@@ -22,6 +23,19 @@ export class UserRepository implements IUserRepository{
     }
     const repository = this.prismaClient
     const user = await repository.user.findUnique({where : {id : idConverted}})
+    return user
+  }
+  async deleteOne(id: string): Promise<null | IUserRepositoryRead> {
+    const idConverted = Number(id)
+    if(!idConverted){
+      return null
+    }
+    const repository = this.prismaClient
+    const userCheck = await repository.user.findUnique({where : {id : idConverted}})
+    if(!userCheck){
+      return null
+    }
+    const user = await repository.user.delete({where : {id : idConverted}})
     return user
   }
   async findUserAlreadyUsedEmail(email: string): Promise<boolean> {
