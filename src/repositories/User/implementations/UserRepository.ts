@@ -15,6 +15,15 @@ export class UserRepository implements IUserRepository{
     const users = await repository.user.findMany()
     return users
   }
+  async readOne(id: string): Promise<IUserRepositoryRead> {
+    const idConverted = Number(id)
+    if(!idConverted){
+      return null
+    }
+    const repository = this.prismaClient
+    const user = await repository.user.findUnique({where : {id : idConverted}})
+    return user
+  }
   async findUserAlreadyUsedEmail(email: string): Promise<boolean> {
     const repository = this.prismaClient
     const userWithEmailAlreadyInUse = await repository.user.findFirst({where : {email}})

@@ -4,13 +4,16 @@ import { ISchemaRequestMiddleware } from "../middlewares/ISchemaRequestMiddlewar
 import { createUserSchema } from "../useCases/express/User/CreateUser/CreateUserSchema";
 import { createUserController } from "../useCases/express/User/CreateUser";
 import { readAllUserController } from "../useCases/express/User/ReadAllUser";
+import { readSpecifyUserController } from "../useCases/express/User/ReadSpecifyUser";
 
 const userRoute = Router()
 
 userRoute.get("",(req : Request,res : Response)=>{
   return readAllUserController.handle(req,res)
 })
-userRoute.get("/:id")
+userRoute.get("/:id",(req : Request, res : Response)=>{
+  return readSpecifyUserController.handle(req,res)
+})
 userRoute.post("",schemaValidationMiddleware(createUserSchema),(req: ISchemaRequestMiddleware,res)=>{
   return createUserController.handle(req,res)
 })

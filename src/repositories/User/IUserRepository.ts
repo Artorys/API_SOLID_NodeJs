@@ -1,7 +1,7 @@
-export interface IUserRepository{
-  save(data : IUserRepositoryCreate): Promise<IUserRepositoryRead>
-  findUserAlreadyUsedEmail(email : string) : Promise<boolean>
-  readAll(): Promise<Array<IUserRepositoryRead>>
+import { IRepository } from "../IRepository";
+
+export interface IUserRepository extends IRepository{
+  findUserAlreadyUsedEmail(email : string) : Promise<boolean> 
 }
 export interface IUserRepositoryCreate{
   name: string;
