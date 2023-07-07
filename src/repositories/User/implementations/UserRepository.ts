@@ -1,6 +1,7 @@
 import {PrismaClient } from "@prisma/client";
 import { IUserRepository, IUserRepositoryCreate, IUserRepositoryRead } from "../IUserRepository";
 import { User } from "../../../entities/User";
+import { hash } from "bcryptjs";
 
 export class UserRepository implements IUserRepository{
   
@@ -8,6 +9,8 @@ export class UserRepository implements IUserRepository{
 
   async save(user: IUserRepositoryCreate): Promise<IUserRepositoryRead> {
     const repository = this.prismaClient
+    const hashPassword = await hash(user.password,10)
+    user.password = hashPassword
     const userCreated = await repository.user.create({data : {...user}})
     return userCreated
   }
