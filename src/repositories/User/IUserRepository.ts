@@ -12,6 +12,16 @@ export interface IUserRepositoryCreate{
   updatedAt?: Date;
   deletedAt?: Date;
 }
+export interface IUserRepositoryUpdate{
+  id? : number;
+  name?: string;
+  email?: string;
+  password?: string;
+  admin?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+}
 export interface IUserRepositoryRead{
   id : number;
   name: string;

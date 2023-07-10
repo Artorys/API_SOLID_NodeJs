@@ -1,7 +1,7 @@
 import {PrismaClient } from "@prisma/client";
 import { IUserRepository, IUserRepositoryCreate, IUserRepositoryRead } from "../IUserRepository";
-import { User } from "../../../entities/User";
 import { hash } from "bcryptjs";
+import { User } from "../../../entities/User";
 
 export class UserRepository implements IUserRepository{
   
@@ -28,25 +28,44 @@ export class UserRepository implements IUserRepository{
     const user = await repository.user.findUnique({where : {id : idConverted}})
     return user
   }
+
+  async updateOne(id: string, data: User): Promise<User> {
+    const idConverted = Number(id)
+    if(!idConverted){
+      return null
+    }
+    const repository = this.prismaClient
+    const user = await repository.user.update({where : {id : idConverted},data})
+    return user
+  }
+
   async deleteOne(id: string): Promise<null | IUserRepositoryRead> {
     const idConverted = Number(id)
     if(!idConverted){
       return null
     }
     const repository = this.prismaClient
-    const userCheck = await repository.user.findUnique({where : {id : idConverted}})
-    if(!userCheck){
-      return null
-    }
     const user = await repository.user.delete({where : {id : idConverted}})
     return user
+  }
+  async checkEntityExistsById(id: string): Promise<boolean>{
+    const idConverted = Number(id)
+    if(!idConverted){
+      return false
+    }
+    const repository = this.prismaClient
+    const userCheck = await repository.user.findUnique({where : {id : idConverted}})
+    if(!userCheck){
+      return false
+    }
+    return true
   }
   async findUserAlreadyUsedEmail(email: string): Promise<boolean> {
     const repository = this.prismaClient
     const userWithEmailAlreadyInUse = await repository.user.findFirst({where : {email}})
-    if(userWithEmailAlreadyInUse){
-      return true
+    if(!userWithEmailAlreadyInUse){
+      return false
     }
-    return false
+    return true
   }
 }

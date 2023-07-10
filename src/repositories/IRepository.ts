@@ -1,9 +1,10 @@
-import { TEntities } from "../entities/EntitiesType"
+import { EntitiesType } from "../entities/types/EntitiesType"
 
 export interface IRepository{
-  save(data : {}): Promise<TEntities>
-  readAll(): Promise<null | Array<TEntities>>
-  readOne(id : string) : Promise<null | TEntities>
-  deleteOne(id : string): Promise<null | TEntities>
-  updateOne(id : string,data : TEntities) : Promise<null | TEntities>
+  save(data : {}): Promise<EntitiesType>
+  readAll(): Promise<null | Array<EntitiesType>>
+  readOne(id : string) : Promise<null | EntitiesType>
+  deleteOne(id : string): Promise<null | EntitiesType>
+  updateOne(id : string,data : {}) : Promise<null | EntitiesType>
+  checkEntityExistsById(id : string) : Promise<boolean>
 }
