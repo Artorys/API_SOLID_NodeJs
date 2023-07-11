@@ -35,6 +35,8 @@ export class UserRepository implements IUserRepository{
       return null
     }
     const repository = this.prismaClient
+    const hashPassword = await hash(data.password,10)
+    data.password = hashPassword
     const user = await repository.user.update({where : {id : idConverted},data})
     return user
   }
